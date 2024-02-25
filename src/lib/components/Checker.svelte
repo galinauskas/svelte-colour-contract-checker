@@ -87,17 +87,22 @@
 
   let userInput1 = "ffffff";
   let userInput2 = "000000";
+
+  let result = calculate();
 </script>
 
 <form>
   <label for="colour1">Colour 1:</label>
   <input type="text" id="colour1" bind:value={userInput1} />
 
+  <br /><br />
+
   <label for="colour2">Colour 2:</label>
   <input type="text" id="colour2" bind:value={userInput2} />
 
-  <button on:click={calculate}>Calculate</button>
+  <br /><br />
+
+  <button on:click={calculate}>Calculate contrast</button>
 </form>
 
-<h6>{userInput1}</h6>
-<h6>{userInput2}</h6>
+<h2>The colour contrast ratio is {result}:1</h2>
