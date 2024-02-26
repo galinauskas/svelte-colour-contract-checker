@@ -75,7 +75,19 @@
     console.log(`The luminance of colour 2 is ${l2}`);
     console.log(`The contrast between the two colours is ${round(result)}:1`);
 
+    display = round(result);
+
+    updatePreview();
+
     return result;
+  }
+
+  /*
+    Function to update the preview colours
+  */
+  function updatePreview() {
+    previewFG = "#" + userInput1;
+    previewBG = "#" + userInput2;
   }
 
   /*
@@ -88,21 +100,123 @@
   let userInput1 = "ffffff";
   let userInput2 = "000000";
 
-  let result = calculate();
+  let previewFG = "#" + userInput1;
+  let previewBG = "#" + userInput2;
+
+  let display = 21;
 </script>
 
 <form>
-  <label for="colour1">Colour 1:</label>
-  <input type="text" id="colour1" bind:value={userInput1} />
+  <h1>Contrast Checker</h1>
 
-  <br /><br />
+  <div class="colourInput">
+    <label for="colour1">Foreground colour</label>
+    <input
+      type="text"
+      id="colour1"
+      bind:value={userInput1}
+      placeholder="#ffffff"
+    />
+    <div class="preview" style="--color: {previewFG}"></div>
+  </div>
 
-  <label for="colour2">Colour 2:</label>
-  <input type="text" id="colour2" bind:value={userInput2} />
-
-  <br /><br />
+  <div class="colourInput">
+    <label for="colour1">Background colour</label>
+    <input
+      type="text"
+      id="colour2"
+      bind:value={userInput2}
+      placeholder="#000000"
+    />
+    <div class="preview" style="--color: {previewBG}"></div>
+  </div>
 
   <button on:click={calculate}>Calculate contrast</button>
 </form>
 
-<h2>The colour contrast ratio is {result}:1</h2>
+<span id="result">The colour contrast ratio is {display}:1</span>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+  * {
+    box-sizing: border-box;
+    margin: none;
+    padding: none;
+    font-family: Inter, sans-serif;
+  }
+
+  #result {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 256px;
+    height: 310px;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    margin: auto;
+    margin-top: 2rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  .colourInput {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+    width: 200px;
+  }
+
+  label {
+    margin-bottom: 0.2rem;
+    width: 100%;
+    font-size: 0.8rem;
+  }
+
+  input {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #c6c6c6;
+    background-color: #f6f6f6;
+    margin-right: 0.5rem;
+    width: 158px;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    margin-top: 0.8rem;
+
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02rem;
+
+    background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0.75) 100%);
+    border-width: 3px 3px 0px 3px;
+    border-style: solid;
+    border-color: #414141;
+    border-radius: 0.5rem;
+  }
+
+  .preview {
+    width: 33px;
+    height: 33px;
+    background-color: var(--color);
+    border-radius: 0.5rem;
+    border: 1px solid #000;
+  }
+</style>
