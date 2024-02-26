@@ -59,8 +59,6 @@
     Function to CHECK the contrast between two colours
   */
   function calculate() {
-    console.log("ran");
-
     // convert user input to rgb values
     let rgb1 = hexToRGB(userInput1);
     let rgb2 = hexToRGB(userInput2);
