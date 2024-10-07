@@ -1,38 +1,27 @@
-# create-svelte
+# Colour Contrast Checker
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+A tool to check and ensure colour contrast compliance with WCAG guidelines, built using SvelteKit.
 
-## Creating a project
+## Overview
 
-If you're seeing this, you've probably already done this step. Congrats!
+This Colour Contrast Checker helps designers and developers ensure their colour choices meet the Web Content Accessibility Guidelines (WCAG) contrast requirements. By providing an easy-to-use interface, it allows users to check and adjust colour combinations for better accessibility.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Preview
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+<img width="409" alt="image" src="https://github.com/user-attachments/assets/9a91d97c-5b58-4d48-b0da-33a8751d4c70">
 
-## Developing
+## Technology Stack
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- SvelteKit
 
-```bash
-npm run dev
+## Getting Started
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Run the development server: `npm run dev`
 
-## Building
+## Why I Created This
+During work on another project, I stumbled upon the Web Content Accessibility Guidelines (WCAG). I decided to create a tool that would make it easier for developers and designers to check and ensure their colour choices comply with these guidelines.
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Challenges Faced
+One of the main challenges I encountered while developing this tool was understanding and implementing the mathematics behind colour contrast calculations. The WCAG guidelines use a specific formula to determine the contrast ratio between two colours, which involves converting RGB colours to relative luminance values and then calculating the ratio.
